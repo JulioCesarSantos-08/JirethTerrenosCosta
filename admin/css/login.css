@@ -1,0 +1,362 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+    135deg,
+    #173B57 0%,
+    #2E7D32 100%
+    );
+
+    overflow:hidden;
+
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:550px;
+
+    height:550px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    top:-180px;
+
+    left:-120px;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:50%;
+
+    bottom:-180px;
+
+    right:-140px;
+
+}
+
+.loginContainer{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.loginCard{
+
+    width:100%;
+
+    max-width:470px;
+
+    background:rgba(255,255,255,.95);
+
+    border-radius:28px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(14px);
+
+    animation:aparecer .45s ease;
+
+}
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.logo{
+
+    width:150px;
+
+    margin:auto;
+
+    display:block;
+
+    margin-bottom:20px;
+
+}
+
+.panelTexto{
+
+    display:inline-block;
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.loginCard h1{
+
+    font-size:2rem;
+
+    color:#173B57;
+
+    margin-bottom:12px;
+
+}
+
+.loginCard p{
+
+    color:#667085;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
+
+.grupo{
+
+    margin-bottom:22px;
+
+    text-align:left;
+
+}
+
+.grupo label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    color:#173B57;
+
+}
+
+.grupo input{
+
+    width:100%;
+
+    height:55px;
+
+    border:1px solid #D0D5DD;
+
+    border-radius:14px;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.grupo input:focus{
+
+    border-color:#2E7D32;
+
+    box-shadow:0 0 0 4px rgba(46,125,50,.15);
+
+}
+
+.passwordBox{
+
+    position:relative;
+
+}
+
+.passwordBox input{
+
+    padding-right:55px;
+
+}
+
+.passwordBox button{
+
+    position:absolute;
+
+    right:10px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.btnLogin{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2E7D32;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    margin-top:10px;
+
+}
+
+.btnLogin:hover{
+
+    background:#388E3C;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 15px 30px rgba(46,125,50,.35);
+
+}
+
+.link{
+
+    margin-top:20px;
+
+    background:none;
+
+    border:none;
+
+    color:#173B57;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.link:hover{
+
+    color:#2E7D32;
+
+}
+
+#mensaje{
+
+    margin-top:18px;
+
+    min-height:24px;
+
+    font-weight:600;
+
+    color:#C62828;
+
+    text-align:center;
+
+}
+
+@media(max-width:600px){
+
+    .loginCard{
+
+        padding:30px 25px;
+
+    }
+
+    .logo{
+
+        width:120px;
+
+    }
+
+    .loginCard h1{
+
+        font-size:1.6rem;
+
+    }
+
+}

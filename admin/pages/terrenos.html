@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Terrenos</title>
+
+<link rel="icon"
+href="../../imagenes/logo1.png">
+
+<link rel="stylesheet"
+href="../css/panel.css">
+
+<link rel="stylesheet"
+href="../css/terrenos.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<div class="logoArea">
+
+<img src="../../imagenes/logo1.png">
+
+<h2>Jireth Terrenos</h2>
+
+<p>Panel Administrativo</p>
+
+</div>
+
+<nav class="menu">
+
+<button onclick="location.href='../panel.html'">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>Dashboard</span>
+
+</button>
+
+<button class="active">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>Terrenos</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+<span>Mapa</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-chart-column"></i>
+
+<span>Estadísticas</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-gear"></i>
+
+<span>Configuración</span>
+
+</button>
+
+<button id="btnCerrarSesion">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>Cerrar sesión</span>
+
+</button>
+
+</nav>
+
+</aside>
+
+<div class="main">
+
+<header class="header">
+
+<h1>
+
+Terrenos
+
+</h1>
+
+<div class="usuario">
+
+<div>
+
+<strong>Administrador</strong>
+
+</div>
+
+<div class="avatar">
+
+A
+
+</div>
+
+</div>
+
+</header>
+
+<section class="contenido">
+
+<div class="tituloTerrenos">
+
+<div>
+
+<h2>
+
+Administrar Terrenos
+
+</h2>
+
+<p>
+
+Aquí podrás crear, editar y administrar todos los terrenos.
+
+</p>
+
+</div>
+
+<button id="btnNuevo">
+
+<i class="fa-solid fa-plus"></i>
+
+Nuevo Terreno
+
+</button>
+
+</div>
+
+<div class="barraSuperior">
+
+<div class="buscador">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Buscar terreno...">
+
+</div>
+
+<select>
+
+<option>
+
+Todos
+
+</option>
+
+<option>
+
+Visibles
+
+</option>
+
+<option>
+
+Ocultos
+
+</option>
+
+<option>
+
+Destacados
+
+</option>
+
+</select>
+
+</div>
+
+<div class="tablaTerrenos">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Foto</th>
+
+<th>Nombre</th>
+
+<th>Municipio</th>
+
+<th>Precio</th>
+
+<th>Estado</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody id="listaTerrenos">
+
+<tr>
+
+<td colspan="6" class="sinDatos">
+
+Todavía no hay terrenos registrados.
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<div id="modalTerreno" class="modal">
+
+<div class="modalContenido">
+
+<div class="modalHeader">
+
+<h2 id="tituloModal">
+
+Nuevo Terreno
+
+</h2>
+
+<button id="cerrarModal">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div class="tabs">
+
+<button class="tab activa">
+
+Información
+
+</button>
+
+<button class="tab">
+
+Multimedia
+
+</button>
+
+<button class="tab">
+
+Ubicación
+
+</button>
+
+</div>
+
+<div class="modalBody">
+
+<div class="paso activo" id="paso1">
+
+<div class="grupo">
+
+<label>
+
+Nombre del terreno
+
+</label>
+
+<input
+type="text"
+id="nombreTerreno">
+
+</div>
+
+<div class="fila">
+
+<div class="grupo">
+
+<label>
+
+Municipio
+
+</label>
+
+<input
+type="text"
+id="municipio">
+
+</div>
+
+<div class="grupo">
+
+<label>
+
+Tipo
+
+</label>
+
+<select id="tipo">
+
+<option>Residencial</option>
+
+<option>Comercial</option>
+
+<option>Campestre</option>
+
+<option>Playa</option>
+
+<option>Agrícola</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="fila">
+
+<div class="grupo">
+
+<label>Precio</label>
+
+<input type="number" id="precio">
+
+</div>
+
+<div class="grupo">
+
+<label>Metros²</label>
+
+<input type="number" id="metros">
+
+</div>
+
+</div>
+
+<div class="grupo">
+
+<label>
+
+Descripción
+
+</label>
+
+<textarea
+id="descripcion"></textarea>
+
+</div>
+
+<div class="checks">
+
+<label>
+
+<input
+type="checkbox"
+id="visible"
+checked>
+
+Visible
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+id="destacado">
+
+Destacado
+
+</label>
+
+</div>
+
+</div>
+
+<div class="paso" id="paso2">
+
+    <div class="grupo">
+
+        <label>Carpeta del terreno</label>
+
+        <div class="selectorCarpeta">
+
+            <input
+                type="text"
+                id="carpeta"
+                placeholder="Ninguna carpeta seleccionada"
+                readonly>
+
+            <button
+                type="button"
+                id="btnSeleccionarCarpeta">
+
+                📂 Seleccionar carpeta
+
+            </button>
+
+            <input
+                type="file"
+                id="selectorCarpeta"
+                webkitdirectory
+                multiple
+                hidden>
+
+        </div>
+
+    </div>
+
+    <h3>🖼 Imágenes</h3>
+
+    <div id="galeriaImagenes"></div>
+
+    <h3>🎥 Videos</h3>
+
+    <div id="listaVideos"></div>
+
+    <h3>📄 Documentos</h3>
+
+    <div id="listaDocumentos"></div>
+
+</div>
+
+<div class="paso" id="paso3">
+
+    <div class="grupo">
+
+        <label>Buscar dirección</label>
+
+        <input
+            type="text"
+            id="buscarDireccion"
+            placeholder="Ej. Puerto Escondido, Oaxaca">
+
+    </div>
+
+    <div id="mapaTerreno"></div>
+
+    <div class="fila">
+
+        <div class="grupo">
+
+            <label>Latitud</label>
+
+            <input
+                type="text"
+                id="latitud"
+                readonly>
+
+        </div>
+
+        <div class="grupo">
+
+            <label>Longitud</label>
+
+            <input
+                type="text"
+                id="longitud"
+                readonly>
+
+        </div>
+
+    </div>
+
+    <button
+        type="button"
+        id="btnMiUbicacion"
+        class="btnGuardar">
+
+        📍 Usar mi ubicación
+
+    </button>
+
+</div>
+
+</div>
+
+<div class="modalFooter">
+
+<button
+id="btnAnterior"
+class="btnCancelar">
+
+Anterior
+
+</button>
+
+<button
+id="btnSiguiente"
+class="btnGuardar">
+
+Siguiente
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script type="module" src="../js/protegerRuta.js"></script>
+
+<script type="module" src="../js/terrenos.js"></script>
+
+</body>
+
+</html>

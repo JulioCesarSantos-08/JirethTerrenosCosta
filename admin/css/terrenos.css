@@ -1,0 +1,885 @@
+.tituloTerrenos{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    gap:20px;
+
+}
+
+.tituloTerrenos h2{
+
+    font-size:30px;
+
+    color:#173B57;
+
+}
+
+.tituloTerrenos p{
+
+    color:#667085;
+
+    margin-top:6px;
+
+}
+
+#btnNuevo{
+
+    background:#2E7D32;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    transition:.30s;
+
+}
+
+#btnNuevo:hover{
+
+    background:#388E3C;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(46,125,50,.25);
+
+}
+
+.barraSuperior{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    gap:20px;
+
+}
+
+.buscador{
+
+    flex:1;
+
+    position:relative;
+
+}
+
+.buscador i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#999;
+
+}
+
+.buscador input{
+
+    width:100%;
+
+    height:52px;
+
+    border:1px solid #D0D5DD;
+
+    border-radius:14px;
+
+    padding-left:50px;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+.buscador input:focus{
+
+    border-color:#2E7D32;
+
+}
+
+.barraSuperior select{
+
+    width:180px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    border:1px solid #D0D5DD;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    background:white;
+
+}
+
+.tablaTerrenos{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.05);
+
+}
+
+.tablaTerrenos table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.tablaTerrenos thead{
+
+    background:#F8FAFC;
+
+}
+
+.tablaTerrenos th{
+
+    padding:18px;
+
+    text-align:left;
+
+    color:#667085;
+
+    font-size:14px;
+
+}
+
+.tablaTerrenos td{
+
+    padding:18px;
+
+    border-top:1px solid #EEF2F6;
+
+}
+
+.tablaTerrenos tbody tr{
+
+    transition:.25s;
+
+}
+
+.tablaTerrenos tbody tr:hover{
+
+    background:#F8FAFC;
+
+}
+
+.sinDatos{
+
+    text-align:center;
+
+    color:#888;
+
+    padding:45px;
+
+    font-size:15px;
+
+}
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.modal.activo{
+
+    display:flex;
+
+}
+
+.modalContenido{
+
+    width:95%;
+
+    max-width:900px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+}
+
+@media(max-width:900px){
+
+    .tituloTerrenos{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .barraSuperior{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .barraSuperior select{
+
+        width:100%;
+
+    }
+
+}
+
+.modalHeader{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.modalHeader h2{
+
+font-size:28px;
+
+color:#173B57;
+
+}
+
+.modalHeader button{
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+background:#EEF2F6;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.30s;
+
+}
+
+.modalHeader button:hover{
+
+background:#E0E7EF;
+
+}
+
+.tabs{
+
+display:flex;
+
+gap:15px;
+
+margin-bottom:30px;
+
+border-bottom:1px solid #E5E7EB;
+
+padding-bottom:15px;
+
+}
+
+.tab{
+
+background:none;
+
+border:none;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+color:#667085;
+
+padding-bottom:8px;
+
+}
+
+.tab.activa{
+
+color:#2E7D32;
+
+border-bottom:3px solid #2E7D32;
+
+}
+
+.fila{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+margin-bottom:20px;
+
+}
+
+.grupo{
+
+margin-bottom:20px;
+
+}
+
+.grupo label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:#173B57;
+
+}
+
+.grupo input,
+.grupo select,
+.grupo textarea{
+
+width:100%;
+
+padding:14px;
+
+border-radius:14px;
+
+border:1px solid #D0D5DD;
+
+font-size:15px;
+
+outline:none;
+
+transition:.30s;
+
+}
+
+.grupo textarea{
+
+resize:vertical;
+
+min-height:120px;
+
+}
+
+.grupo input:focus,
+.grupo select:focus,
+.grupo textarea:focus{
+
+border-color:#2E7D32;
+
+box-shadow:0 0 0 4px rgba(46,125,50,.12);
+
+}
+
+.checks{
+
+display:flex;
+
+gap:30px;
+
+margin-top:20px;
+
+}
+
+.modalFooter{
+
+display:flex;
+
+justify-content:flex-end;
+
+gap:15px;
+
+margin-top:35px;
+
+}
+
+.btnCancelar{
+
+background:#EEF2F6;
+
+border:none;
+
+padding:14px 24px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.btnGuardar{
+
+background:#2E7D32;
+
+color:white;
+
+border:none;
+
+padding:14px 30px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.30s;
+
+}
+
+.btnGuardar:hover{
+
+background:#388E3C;
+
+}
+
+@media(max-width:700px){
+
+.fila{
+
+grid-template-columns:1fr;
+
+}
+
+.tabs{
+
+overflow:auto;
+
+}
+
+.modalContenido{
+
+padding:25px;
+
+}
+
+}
+
+.paso{
+
+display:none;
+
+animation:fadeWizard .25s ease;
+
+}
+
+.paso.activo{
+
+display:block;
+
+}
+
+@keyframes fadeWizard{
+
+from{
+
+opacity:0;
+
+transform:translateX(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+.galeriaPreview{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+
+gap:18px;
+
+margin-top:12px;
+
+}
+
+.previewVacio{
+
+height:170px;
+
+border:2px dashed #D6DCE3;
+
+border-radius:16px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:#888;
+
+background:#FAFBFC;
+
+}
+
+.previewImagen{
+
+height:170px;
+
+border-radius:16px;
+
+overflow:hidden;
+
+border:1px solid #E5E7EB;
+
+background:white;
+
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.previewImagen img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.grupo small{
+
+display:block;
+
+margin-top:8px;
+
+color:#777;
+
+font-size:13px;
+
+}
+
+.selectorCarpeta{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.selectorCarpeta input{
+    flex:1;
+}
+
+.selectorCarpeta button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#16A34A;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.selectorCarpeta button:hover{
+    background:#15803D;
+}
+
+#galeriaImagenes{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:20px;
+    margin:20px 0;
+}
+
+#listaVideos,
+#listaDocumentos{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin:20px 0;
+}
+
+.tarjetaImagen{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+    transition:.30s;
+
+}
+
+.tarjetaImagen:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+
+}
+
+.tarjetaImagen img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.tarjetaImagen label{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:14px;
+
+    font-weight:600;
+
+}
+
+.archivo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:16px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+}
+
+.archivo span{
+
+    font-weight:600;
+
+    color:#173B57;
+
+}
+
+.archivo input[type="text"]{
+
+    width:280px;
+
+    padding:10px 14px;
+
+    border:1px solid #D0D5DD;
+
+    border-radius:10px;
+
+    outline:none;
+
+}
+
+.archivo input[type="text"]:focus{
+
+    border-color:#2E7D32;
+
+}
+
+#galeriaImagenes{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+#listaVideos{
+
+    margin-top:25px;
+
+}
+
+#listaDocumentos{
+
+    margin-top:25px;
+
+}
+
+.modalContenido{
+
+    max-width:1200px;
+
+}
+
+#galeriaImagenes:empty::before{
+
+    content:"Todavía no hay imágenes.";
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:180px;
+
+    border:2px dashed #D9DEE5;
+
+    border-radius:18px;
+
+    color:#8B8B8B;
+
+}
+
+.accionesImagen{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px;
+
+}
+
+.btnPortada{
+
+    border:none;
+
+    background:#FACC15;
+
+    color:#111827;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.btnPortada:hover{
+
+    background:#EAB308;
+
+}
+
+.btnPortada.activa{
+
+    background:#F59E0B;
+
+    color:white;
+
+}
+
+#mapaTerreno{
+
+    width:100%;
+
+    height:450px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    margin:20px 0;
+
+    border:1px solid #D9DEE5;
+
+}

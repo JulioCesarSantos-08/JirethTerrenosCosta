@@ -1,5 +1,7 @@
 import "../firebase.js";
 
+import "./leerTerrenos.js";
+
 const loader = document.getElementById("loader");
 const contenido = document.getElementById("contenido");
 

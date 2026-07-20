@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Panel Administrativo</title>
+
+<link rel="icon" href="../imagenes/logo1.png">
+
+<link rel="stylesheet" href="css/panel.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<div class="logoArea">
+
+<img src="../imagenes/logo1.png" alt="Logo">
+
+<h2>Jireth Terrenos</h2>
+
+<p>Panel Administrativo</p>
+
+</div>
+
+<nav class="menu">
+
+<button class="active">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>Dashboard</span>
+
+</button>
+
+<button onclick="location.href='pages/terrenos.html'">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>Terrenos</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+<span>Mapa</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-chart-column"></i>
+
+<span>Estadísticas</span>
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-gear"></i>
+
+<span>Configuración</span>
+
+</button>
+
+<button id="btnCerrarSesion">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>Cerrar sesión</span>
+
+</button>
+
+</nav>
+
+</aside>
+
+<div class="main">
+
+<header class="header">
+
+<h1>
+
+Dashboard
+
+</h1>
+
+<div class="usuario">
+
+<div>
+
+<strong>Administrador</strong>
+
+</div>
+
+<div class="avatar">
+
+A
+
+</div>
+
+</div>
+
+</header>
+
+<section class="contenido">
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Terrenos</h3>
+
+<h2 id="totalTerrenos">
+
+0
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Publicados</h3>
+
+<h2 id="publicados">
+
+0
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Destacados</h3>
+
+<h2 id="destacados">
+
+0
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Ocultos</h3>
+
+<h2 id="ocultos">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="tabla">
+
+<h2>
+
+Últimos terrenos registrados
+
+</h2>
+
+<br>
+
+<p style="color:#777;">
+
+Aquí aparecerán automáticamente los últimos terrenos agregados por la administradora.
+
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<script type="module" src="js/protegerRuta.js"></script>
+
+<script type="module" src="js/panel.js"></script>
+
+</body>
+
+</html>
