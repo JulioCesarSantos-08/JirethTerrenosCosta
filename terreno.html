@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jireth Terrenos de la Costa</title>
+
+    <link rel="stylesheet" href="css/detalleTerreno.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+</head>
+
+<body>
+
+<header class="encabezado">
+
+    <div class="contenedorHeader">
+
+        <a href="index.html" class="logo">
+
+            <img src="imagenes/logo1.png" alt="Logo">
+
+        </a>
+
+        <a href="index.html" class="volver">
+
+            ← Volver al inicio
+
+        </a>
+
+    </div>
+
+</header>
+
+<main class="contenedor">
+
+    <section class="galeria">
+
+        <div class="imagenPrincipal">
+
+            <img
+                id="imagenPrincipal"
+                src="imagenes/logo1.png"
+                alt="Terreno">
+
+        </div>
+
+        <div
+            class="miniaturas"
+            id="miniaturas">
+
+        </div>
+
+    </section>
+
+    <section class="informacion">
+
+        <span
+            id="estado"
+            class="estado">
+
+            Disponible
+
+        </span>
+
+        <h1 id="nombre">
+
+            Cargando...
+
+        </h1>
+
+        <p
+            id="municipio"
+            class="municipio">
+
+        </p>
+
+        <div class="datos">
+
+            <div class="dato">
+
+                <strong>Precio</strong>
+
+                <span id="precio"></span>
+
+            </div>
+
+            <div class="dato">
+
+                <strong>Metros</strong>
+
+                <span id="metros"></span>
+
+            </div>
+
+            <div class="dato">
+
+                <strong>Tipo</strong>
+
+                <span id="tipo"></span>
+
+            </div>
+
+        </div>
+
+        <h2>
+
+            Descripción
+
+        </h2>
+
+        <p id="descripcion">
+
+        </p>
+
+        <a
+            id="btnWhatsapp"
+            target="_blank"
+            class="btnWhatsapp">
+
+            Solicitar información
+
+        </a>
+
+    </section>
+
+    <section class="mapa">
+
+        <h2>
+
+            Ubicación
+
+        </h2>
+
+        <div id="mapaTerreno"></div>
+
+    </section>
+
+    <section
+        id="videosContainer"
+        class="videos">
+
+        <h2>
+
+            Videos
+
+        </h2>
+
+        <div id="videos">
+
+        </div>
+
+    </section>
+
+    <section
+        id="documentosContainer"
+        class="documentos">
+
+        <h2>
+
+            Documentos
+
+        </h2>
+
+        <div id="documentos">
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    © 2026 Jireth Terrenos de la Costa
+
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script
+    type="module"
+    src="js/detalleTerreno.js">
+
+</script>
+
+</body>
+
+</html>

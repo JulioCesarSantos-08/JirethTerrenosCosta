@@ -883,3 +883,89 @@ font-size:13px;
     border:1px solid #D9DEE5;
 
 }
+
+.accionesTerreno{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+
+}
+
+.btnEditar,
+.btnEliminar{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:10px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    color:white;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.10);
+
+}
+
+.btnEditar{
+
+    background:linear-gradient(135deg,#FB8C00,#F57C00);
+
+}
+
+.btnEditar:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 14px 28px rgba(245,124,0,.35);
+
+}
+
+.btnEliminar{
+
+    background:linear-gradient(135deg,#E53935,#C62828);
+
+}
+
+.btnEliminar:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 14px 28px rgba(198,40,40,.35);
+
+}
+
+.btnEditar i,
+.btnEliminar i{
+
+    font-size:13px;
+
+}
+
+@media(max-width:900px){
+
+    .accionesTerreno{
+
+        flex-direction:column;
+
+    }
+
+}

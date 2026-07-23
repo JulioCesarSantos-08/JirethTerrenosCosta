@@ -9,17 +9,33 @@ const grid = document.getElementById("gridTerrenos");
 
 function crearCard(id, terreno) {
 
+    const imagen =
+
+        terreno.multimedia?.carpeta &&
+        terreno.multimedia?.portada
+
+            ? `terrenos/${terreno.multimedia.carpeta}/${terreno.multimedia.portada}`
+
+            : "imagenes/logo1.png";
+
+    const estado = terreno.visible
+        ? "Disponible"
+        : "No disponible";
+
     return `
 
         <article class="cardTerreno">
 
             <div class="imagenTerreno">
 
-                <img src="terrenos/${terreno.carpeta}/img1.png" alt="${terreno.nombre}">
+                <img
+                    src="${imagen}"
+                    alt="${terreno.nombre}"
+                    onerror="this.src='imagenes/logo1.png'">
 
                 <span class="estado disponible">
 
-                    ${terreno.estado}
+                    ${estado}
 
                 </span>
 
@@ -75,27 +91,33 @@ async function leerTerrenos() {
 
     try {
 
-        console.log("GRID:", grid);
+        if (!grid) return;
 
-        if (!grid) {
+        const snapshot = await getDocs(collection(db, "terrenos"));
 
-            console.error("No existe el contenedor #gridTerrenos");
+        grid.innerHTML = "";
+
+        if (snapshot.empty) {
+
+            grid.innerHTML = `
+
+                <p class="sinDatos">
+
+                    No hay terrenos disponibles.
+
+                </p>
+
+            `;
 
             return;
 
         }
 
-        const snapshot = await getDocs(collection(db, "terrenos"));
-
-        console.log("Documentos encontrados:", snapshot.size);
-
-        grid.innerHTML = "";
-
         snapshot.forEach(doc => {
 
             const terreno = doc.data();
 
-            console.log("Terreno:", terreno);
+            if (!terreno.visible) return;
 
             const card = crearCard(doc.id, terreno);
 
@@ -107,7 +129,7 @@ async function leerTerrenos() {
 
     catch (error) {
 
-        console.error("Error al leer terrenos:", error);
+        console.error(error);
 
     }
 

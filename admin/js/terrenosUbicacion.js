@@ -93,3 +93,17 @@ btnMiUbicacion.addEventListener("click",()=>{
 });
 
 window.iniciarMapa = iniciarMapa;
+
+window.cargarUbicacion=function(lat,lng){
+
+    iniciarMapa();
+
+    if(!mapa || !marcador)return;
+
+    mapa.setView([lat,lng],17);
+
+    marcador.setLatLng([lat,lng]);
+
+    actualizarInputs(lat,lng);
+
+}
