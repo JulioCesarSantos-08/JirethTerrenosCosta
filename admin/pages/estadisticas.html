@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Configuración | Panel Administrador</title>
+<title>Estadísticas | Panel Administrador</title>
 
 <link rel="icon" href="../../imagenes/logo1.png">
 
 <link rel="stylesheet" href="../css/panel.css">
 
-<link rel="stylesheet" href="../css/configuracion.css">
+<link rel="stylesheet" href="../css/estadisticas.css">
 
 <link
 rel="stylesheet"
@@ -63,7 +63,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </button>
 
-<button onclick="location.href='estadisticas.html'">
+<button class="active">
 
 <i class="fa-solid fa-chart-column"></i>
 
@@ -71,7 +71,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </button>
 
-<button class="active">
+<button onclick="location.href='configuracion.html'">
 
 <i class="fa-solid fa-gear"></i>
 
@@ -97,7 +97,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <h1>
 
-Configuración
+Estadísticas
 
 </h1>
 
@@ -131,13 +131,13 @@ A
 
 <h2>
 
-Configuración General
+Panel Estadístico
 
 </h2>
 
 <p>
 
-Administra la información principal del sitio web.
+Consulta el rendimiento general de los terrenos registrados.
 
 </p>
 
@@ -145,29 +145,193 @@ Administra la información principal del sitio web.
 
 </div>
 
-<div class="gridConfiguracion">
+<div class="cardsResumen">
 
-<section class="cardConfiguracion">
+<div class="cardResumen">
 
-<h3>
+<div class="icono">
 
-Información del Negocio
+<i class="fa-solid fa-map-location-dot"></i>
+
+</div>
+
+<div>
+
+<h3 id="totalTerrenos">
+
+0
 
 </h3>
 
-<div class="grid2">
+<p>
+
+Total Terrenos
+
+</p>
+
+</div>
+
+</div>
+
+<div class="cardResumen">
+
+<div class="icono verde">
+
+<i class="fa-solid fa-eye"></i>
+
+</div>
+
+<div>
+
+<h3 id="totalPublicados">
+
+0
+
+</h3>
+
+<p>
+
+Publicados
+
+</p>
+
+</div>
+
+</div>
+
+<div class="cardResumen">
+
+<div class="icono naranja">
+
+<i class="fa-solid fa-star"></i>
+
+</div>
+
+<div>
+
+<h3 id="totalDestacados">
+
+0
+
+</h3>
+
+<p>
+
+Destacados
+
+</p>
+
+</div>
+
+</div>
+
+<div class="cardResumen">
+
+<div class="icono rojo">
+
+<i class="fa-solid fa-eye-slash"></i>
+
+</div>
+
+<div>
+
+<h3 id="totalOcultos">
+
+0
+
+</h3>
+
+<p>
+
+Ocultos
+
+</p>
+
+</div>
+
+</div>
+
+<div class="cardResumen">
+
+<div class="icono azul">
+
+<i class="fa-solid fa-city"></i>
+
+</div>
+
+<div>
+
+<h3 id="totalMunicipios">
+
+0
+
+</h3>
+
+<p>
+
+Municipios
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="gridEstadisticas">
+
+<section class="panelGrafica">
+
+<h3>
+
+Terrenos por Municipio
+
+</h3>
+
+<div id="graficaMunicipios">
+
+</div>
+
+</section>
+
+<section class="panelGrafica">
+
+<h3>
+
+Tipos de Terreno
+
+</h3>
+
+<div id="graficaTipos">
+
+</div>
+
+</section>
+
+<section class="panelGrafica">
+
+<h3>
+
+Resumen Económico
+
+</h3>
+
+<div class="resumenEconomico">
 
 <div>
 
 <label>
 
-Nombre
+Valor Total
 
 </label>
 
-<input
-type="text"
-id="nombreEmpresa">
+<strong id="valorTotal">
+
+$0
+
+</strong>
 
 </div>
 
@@ -175,13 +339,15 @@ id="nombreEmpresa">
 
 <label>
 
-Eslogan
+Precio Promedio
 
 </label>
 
-<input
-type="text"
-id="eslogan">
+<strong id="precioPromedio">
+
+$0
+
+</strong>
 
 </div>
 
@@ -189,13 +355,15 @@ id="eslogan">
 
 <label>
 
-WhatsApp
+Terreno Más Caro
 
 </label>
 
-<input
-type="text"
-id="whatsapp">
+<strong id="precioMayor">
+
+$0
+
+</strong>
 
 </div>
 
@@ -203,26 +371,15 @@ id="whatsapp">
 
 <label>
 
-Correo
+Terreno Más Económico
 
 </label>
 
-<input
-type="email"
-id="correo">
+<strong id="precioMenor">
 
-</div>
+$0
 
-<div class="columnaCompleta">
-
-<label>
-
-Dirección
-
-</label>
-
-<textarea
-id="direccion"></textarea>
+</strong>
 
 </div>
 
@@ -230,167 +387,19 @@ id="direccion"></textarea>
 
 </section>
 
-<section class="cardConfiguracion">
+<section class="panelGrafica anchoCompleto">
 
 <h3>
 
-Redes Sociales
+Últimos Terrenos Registrados
 
 </h3>
 
-<div class="grid2">
-
-<div>
-
-<label>
-
-Facebook
-
-</label>
-
-<input
-type="text"
-id="facebook">
-
-</div>
-
-<div>
-
-<label>
-
-Instagram
-
-</label>
-
-<input
-type="text"
-id="instagram">
-
-</div>
-
-<div>
-
-<label>
-
-TikTok
-
-</label>
-
-<input
-type="text"
-id="tiktok">
-
-</div>
-
-<div>
-
-<label>
-
-YouTube
-
-</label>
-
-<input
-type="text"
-id="youtube">
-
-</div>
+<div id="ultimosTerrenos">
 
 </div>
 
 </section>
-
-<section class="cardConfiguracion">
-
-<h3>
-
-Mapa Principal
-
-</h3>
-
-<div class="grid3">
-
-<div>
-
-<label>
-
-Latitud
-
-</label>
-
-<input
-type="number"
-step="any"
-id="latitud">
-
-</div>
-
-<div>
-
-<label>
-
-Longitud
-
-</label>
-
-<input
-type="number"
-step="any"
-id="longitud">
-
-</div>
-
-<div>
-
-<label>
-
-Zoom
-
-</label>
-
-<input
-type="number"
-id="zoom">
-
-</div>
-
-</div>
-
-</section>
-
-<section class="cardConfiguracion">
-
-<h3>
-
-Botón de Contacto
-
-</h3>
-
-<label>
-
-Texto del botón WhatsApp
-
-</label>
-
-<input
-type="text"
-id="textoWhatsapp">
-
-</section>
-
-<div class="accionesConfiguracion">
-
-<button
-id="btnGuardarConfiguracion"
-class="btn btnVerde">
-
-<i class="fa-solid fa-floppy-disk"></i>
-
-Guardar Configuración
-
-</button>
-
-</div>
 
 </div>
 
@@ -400,7 +409,7 @@ Guardar Configuración
 
 </div>
 
-<script type="module" src="../js/configuracion.js"></script>
+<script type="module" src="../js/estadisticas.js"></script>
 
 </body>
 

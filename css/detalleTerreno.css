@@ -41,8 +41,37 @@ img{
 }
 
 .volver{
-    color:#0d6efd;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    background:#0d6efd;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
     font-weight:bold;
+
+    transition:.25s;
+
+    box-shadow:0 6px 15px rgba(13,110,253,.25);
+
+}
+
+.volver:hover{
+
+    background:#0b5ed7;
+
+    transform:translateY(-2px);
+
 }
 
 .contenedor{
@@ -248,5 +277,45 @@ footer{
     #mapaTerreno{
         height:320px;
     }
+
+}
+
+.accionesMapa{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.btnGoogleMaps{
+
+    background:#0d6efd;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.btnGoogleMaps:hover{
+
+    transform:translateY(-2px);
+
+    background:#0b5ed7;
 
 }

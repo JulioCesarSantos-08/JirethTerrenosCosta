@@ -77,6 +77,10 @@ cargarGaleria();
 
 cargarMapa();
 
+cargarVideos();
+
+cargarDocumentos();
+
     }
 
     catch(error){
@@ -86,6 +90,65 @@ cargarMapa();
         mostrarError("Ocurrió un error al cargar el terreno.");
 
     }
+
+    function cargarDocumentos(){
+
+    if(!terrenoActual.multimedia){
+
+        documentos.parentElement.style.display="none";
+
+        return;
+
+    }
+
+    const carpeta = terrenoActual.multimedia.carpeta;
+
+    const lista = terrenoActual.multimedia.documentos
+        .filter(documento=>documento.publicar);
+
+    if(lista.length===0){
+
+        documentos.parentElement.style.display="none";
+
+        return;
+
+    }
+
+    documentos.innerHTML="";
+
+    lista.forEach(documento=>{
+
+        const card=document.createElement("div");
+
+        card.className="documento";
+
+        card.innerHTML=`
+
+            <h3>
+
+                📄 ${documento.titulo || documento.archivo}
+
+            </h3>
+
+            <br>
+
+            <a
+
+                href="terrenos/${carpeta}/${documento.archivo}"
+
+                target="_blank">
+
+                Ver documento
+
+            </a>
+
+        `;
+
+        documentos.appendChild(card);
+
+    });
+
+}
 
     function cargarGaleria(){
 
@@ -133,6 +196,47 @@ cargarMapa();
         };
 
         miniaturas.appendChild(img);
+
+    });
+
+}
+
+function cargarVideos(){
+
+    if(!terrenoActual.multimedia){
+
+        videos.parentElement.style.display="none";
+
+        return;
+
+    }
+
+    const carpeta = terrenoActual.multimedia.carpeta;
+
+    const lista = terrenoActual.multimedia.videos
+        .filter(video=>video.publicar);
+
+    if(lista.length===0){
+
+        videos.parentElement.style.display="none";
+
+        return;
+
+    }
+
+    videos.innerHTML="";
+
+    lista.forEach(video=>{
+
+        const elemento=document.createElement("video");
+
+        elemento.controls=true;
+
+        elemento.preload="metadata";
+
+        elemento.src=`terrenos/${carpeta}/${video.archivo}`;
+
+        videos.appendChild(elemento);
 
     });
 
@@ -219,6 +323,32 @@ function mostrarInformacion(){
     tipo.textContent = terrenoActual.tipo;
 
     descripcion.textContent = terrenoActual.descripcion;
+
+const mensaje = encodeURIComponent(
+
+`Hola.
+
+Me gustaría conocer más sobre el terreno:
+
+${terrenoActual.nombre}
+
+¿Podría brindarme más información?`
+
+);
+
+btnWhatsapp.href = `https://wa.me/529541133925?text=${mensaje}`;
+
+btnGoogleMaps.onclick = ()=>{
+
+    window.open(
+
+        `https://www.google.com/maps?q=${terrenoActual.latitud},${terrenoActual.longitud}`,
+
+        "_blank"
+
+    );
+
+};
 
 }
 

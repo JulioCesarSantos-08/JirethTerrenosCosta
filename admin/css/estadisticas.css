@@ -1,0 +1,382 @@
+.cardsResumen{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.cardResumen{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:1px solid var(--borde);
+
+    box-shadow:var(--sombra);
+
+    transition:.30s;
+
+}
+
+.cardResumen:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.icono{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    background:#E8F5E9;
+
+    color:var(--verde);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+}
+
+.icono.verde{
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+}
+
+.icono.naranja{
+
+    background:#FFF3E0;
+
+    color:#FB8C00;
+
+}
+
+.icono.rojo{
+
+    background:#FDECEC;
+
+    color:#E53935;
+
+}
+
+.icono.azul{
+
+    background:#E3F2FD;
+
+    color:#1976D2;
+
+}
+
+.cardResumen h3{
+
+    font-size:2rem;
+
+    color:var(--texto);
+
+}
+
+.cardResumen p{
+
+    color:var(--texto2);
+
+    margin-top:4px;
+
+}
+
+.gridEstadisticas{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+}
+
+.panelGrafica{
+
+    background:white;
+
+    border-radius:24px;
+
+    border:1px solid var(--borde);
+
+    box-shadow:var(--sombra);
+
+    padding:25px;
+
+}
+
+.panelGrafica h3{
+
+    margin-bottom:25px;
+
+    color:var(--texto);
+
+    font-size:1.2rem;
+
+}
+
+.anchoCompleto{
+
+    grid-column:1/-1;
+
+}
+
+#graficaMunicipios,
+
+#graficaTipos{
+
+    min-height:320px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:2px dashed #D8DEE9;
+
+    border-radius:18px;
+
+    color:#94A3B8;
+
+    font-size:18px;
+
+}
+
+.resumenEconomico{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.resumenEconomico div{
+
+    background:#F8FAFC;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.resumenEconomico label{
+
+    display:block;
+
+    color:var(--texto2);
+
+    margin-bottom:10px;
+
+    font-size:14px;
+
+}
+
+.resumenEconomico strong{
+
+    font-size:1.6rem;
+
+    color:var(--verde);
+
+}
+
+#ultimosTerrenos{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+.cardUltimo{
+
+    border:1px solid var(--borde);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.30s;
+
+    background:white;
+
+}
+
+.cardUltimo:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.cardUltimo img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+}
+
+.cardUltimo .info{
+
+    padding:18px;
+
+}
+
+.cardUltimo h4{
+
+    margin-bottom:10px;
+
+    color:var(--texto);
+
+}
+
+.cardUltimo p{
+
+    color:var(--texto2);
+
+    margin-bottom:8px;
+
+}
+
+.cardUltimo strong{
+
+    color:var(--verde);
+
+    font-size:1.2rem;
+
+}
+
+@media(max-width:1400px){
+
+    .cardsResumen{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:1000px){
+
+    .gridEstadisticas{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .anchoCompleto{
+
+        grid-column:auto;
+
+    }
+
+    .cardsResumen{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .cardsResumen{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .resumenEconomico{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+.barraEstadistica{
+
+    margin-bottom:20px;
+
+}
+
+.barraEstadistica:last-child{
+
+    margin-bottom:0;
+
+}
+
+.barraEstadistica .encabezado{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    color:var(--texto);
+
+}
+
+.barra{
+
+    height:16px;
+
+    background:#EEF2F7;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.barra div{
+
+    height:100%;
+
+    width:0;
+
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#2E7D32,#66BB6A);
+
+    transition:width .8s ease;
+
+}

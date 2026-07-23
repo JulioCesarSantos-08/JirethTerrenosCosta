@@ -1,0 +1,389 @@
+.panelMapa{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.barraMapa{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:18px;
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    border:1px solid var(--borde);
+
+    box-shadow:var(--sombra);
+
+}
+
+.barraMapa input,
+.barraMapa select{
+
+    height:55px;
+
+    border:2px solid var(--borde);
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.30s;
+
+    background:white;
+
+}
+
+.barraMapa input:focus,
+.barraMapa select:focus{
+
+    border-color:var(--verde);
+
+    box-shadow:0 0 0 5px rgba(46,125,50,.10);
+
+}
+
+.contenidoMapa{
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    gap:25px;
+
+    height:calc(100vh - 245px);
+
+}
+
+.listaTerrenos{
+
+    background:white;
+
+    border-radius:24px;
+
+    border:1px solid var(--borde);
+
+    box-shadow:var(--sombra);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+.tituloLista{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:24px;
+
+    border-bottom:1px solid var(--borde);
+
+}
+
+.tituloLista h3{
+
+    font-size:1.2rem;
+
+}
+
+.tituloLista span{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--verde);
+
+    color:white;
+
+    font-weight:700;
+
+}
+
+.listaScroll{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:18px;
+
+}
+
+.itemTerreno{
+
+    background:#fff;
+
+    border:1px solid var(--borde);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:16px;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.itemTerreno:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--verde);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+}
+
+.itemTerreno h4{
+
+    font-size:1rem;
+
+    margin-bottom:10px;
+
+    color:var(--texto);
+
+}
+
+.itemTerreno p{
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+.itemTerreno strong{
+
+    color:var(--verde);
+
+    font-size:18px;
+
+}
+
+.itemTerreno span{
+
+    display:inline-block;
+
+    margin-top:12px;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    background:#E8F5E9;
+
+    color:var(--verde);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.mapaLeaflet{
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid var(--borde);
+
+    box-shadow:var(--sombra);
+
+}
+
+#mapa{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.leaflet-popup-content{
+
+    margin:15px;
+
+}
+
+.popupMapa{
+
+    width:250px;
+
+}
+
+.popupMapa h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+.popupMapa p{
+
+    margin-bottom:8px;
+
+    color:#667085;
+
+}
+
+.popupMapa strong{
+
+    color:var(--verde);
+
+    font-size:22px;
+
+    display:block;
+
+    margin:12px 0;
+
+}
+
+.popupMapa a{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:46px;
+
+    border-radius:14px;
+
+    margin-top:15px;
+
+    background:var(--verde);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.popupMapa a:hover{
+
+    background:var(--verdeClaro);
+
+}
+
+.listaScroll::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.listaScroll::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:50px;
+
+}
+
+.listaScroll::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+
+}
+
+@media(max-width:1200px){
+
+    .contenidoMapa{
+
+        grid-template-columns:300px 1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .barraMapa{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .contenidoMapa{
+
+        grid-template-columns:1fr;
+
+        height:auto;
+
+    }
+
+    .listaTerrenos{
+
+        height:420px;
+
+    }
+
+    #mapa{
+
+        height:550px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .barraMapa{
+
+        padding:18px;
+
+    }
+
+    .tituloLista{
+
+        padding:18px;
+
+    }
+
+    .listaScroll{
+
+        padding:14px;
+
+    }
+
+}

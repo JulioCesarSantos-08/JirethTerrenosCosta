@@ -7,7 +7,29 @@ import {
 
 const grid = document.getElementById("gridTerrenos");
 
-function crearCard(id, terreno) {
+const mapaContenedor = document.getElementById("mapaTerrenos");
+
+let mapaGeneral;
+
+let limites;
+
+const gridUbicaciones = document.getElementById("gridUbicaciones");
+
+const imagenesMunicipios = {
+
+    "Puerto Escondido":"imagenes/puerto.jpg",
+
+    "Huatulco":"imagenes/huatulco.jpg",
+
+    "Rio Grande":"imagenes/riogrande.jpg",
+
+    "Pinotepa Nacional":"imagenes/pinotepa.jpg"
+
+};
+
+const municipios = {};
+
+function crearCard(id, terreno){
 
     const imagen =
 
@@ -19,7 +41,9 @@ function crearCard(id, terreno) {
             : "imagenes/logo1.png";
 
     const estado = terreno.visible
+
         ? "Disponible"
+
         : "No disponible";
 
     return `
@@ -29,9 +53,14 @@ function crearCard(id, terreno) {
             <div class="imagenTerreno">
 
                 <img
+
                     src="${imagen}"
+
                     alt="${terreno.nombre}"
-                    onerror="this.src='imagenes/logo1.png'">
+
+                    onerror="this.src='imagenes/logo1.png'"
+
+                >
 
                 <span class="estado disponible">
 
@@ -72,8 +101,12 @@ function crearCard(id, terreno) {
                 </h4>
 
                 <a
+
                     href="terreno.html?id=${id}"
-                    class="btnTerreno">
+
+                    class="btnTerreno"
+
+                >
 
                     Conocer propiedad
 
@@ -87,17 +120,263 @@ function crearCard(id, terreno) {
 
 }
 
-async function leerTerrenos() {
+function iniciarMapa(){
 
-    try {
+    if(!mapaContenedor){
 
-        if (!grid) return;
+        return;
 
-        const snapshot = await getDocs(collection(db, "terrenos"));
+    }
+
+    mapaGeneral = L.map("mapaTerrenos").setView(
+
+        [16.8609,-96.7842],
+
+        8
+
+    );
+
+    L.tileLayer(
+
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            attribution:"© OpenStreetMap",
+
+            maxZoom:20
+
+        }
+
+    ).addTo(mapaGeneral);
+
+    limites = L.latLngBounds();
+
+}
+
+function crearMarcador(id, terreno){
+
+    if(
+
+        terreno.latitud == null ||
+
+        terreno.longitud == null
+
+    ){
+
+        return;
+
+    }
+
+    const lat = Number(terreno.latitud);
+
+    const lng = Number(terreno.longitud);
+
+    limites.extend([lat,lng]);
+
+    const imagen =
+
+        terreno.multimedia?.carpeta &&
+
+        terreno.multimedia?.portada
+
+            ? `terrenos/${terreno.multimedia.carpeta}/${terreno.multimedia.portada}`
+
+            : "imagenes/logo1.png";
+
+    const precio = new Intl.NumberFormat(
+
+        "es-MX",
+
+        {
+
+            style:"currency",
+
+            currency:"MXN"
+
+        }
+
+    ).format(terreno.precio);
+
+    const popup = `
+
+        <div style="width:220px;">
+
+            <img
+
+                src="${imagen}"
+
+                style="
+
+                    width:100%;
+
+                    height:130px;
+
+                    object-fit:cover;
+
+                    border-radius:10px;
+
+                    margin-bottom:10px;
+
+                "
+
+            >
+
+            <h3 style="margin-bottom:8px;">
+
+                ${terreno.nombre}
+
+            </h3>
+
+            <p>
+
+                📍 ${terreno.municipio}
+
+            </p>
+
+            <p>
+
+                💰 ${precio}
+
+            </p>
+
+            <a
+
+                href="terreno.html?id=${id}"
+
+                style="
+
+                    display:block;
+
+                    margin-top:12px;
+
+                    padding:10px;
+
+                    text-align:center;
+
+                    background:#0d6efd;
+
+                    color:white;
+
+                    border-radius:8px;
+
+                    text-decoration:none;
+
+                    font-weight:bold;
+
+                "
+
+            >
+
+                Ver propiedad
+
+            </a>
+
+        </div>
+
+    `;
+
+    L.marker([lat,lng])
+
+        .addTo(mapaGeneral)
+
+        .bindPopup(popup);
+
+}
+
+function cargarUbicaciones(){
+
+    if(!gridUbicaciones){
+
+        return;
+
+    }
+
+    gridUbicaciones.innerHTML="";
+
+    Object.entries(municipios).forEach(
+
+        ([municipio,cantidad])=>{
+
+            const imagen =
+
+                imagenesMunicipios[municipio]
+
+                ||
+
+                "imagenes/logo1.png";
+
+            gridUbicaciones.insertAdjacentHTML(
+
+                "beforeend",
+
+                `
+
+<article
+
+    class="cardUbicacion"
+
+    onclick="window.location.href='terrenos.html?municipio=${encodeURIComponent(municipio)}'"
+
+>
+
+    <img src="${imagen}">
+
+    <div>
+
+        <h3>
+
+            ${municipio}
+
+        </h3>
+
+        <span>
+
+            ${cantidad}
+
+            ${cantidad===1
+
+                ? "propiedad"
+
+                : "propiedades"}
+
+        </span>
+
+    </div>
+
+</article>
+
+                `
+
+            );
+
+        }
+
+    );
+
+}
+
+async function leerTerrenos(){
+
+    try{
+
+       if(grid){
+
+    grid.innerHTML = "";
+
+}
+
+        iniciarMapa();
+
+        const snapshot = await getDocs(
+
+            collection(db,"terrenos")
+
+        );
 
         grid.innerHTML = "";
 
-        if (snapshot.empty) {
+        if(snapshot.empty){
 
             grid.innerHTML = `
 
@@ -113,21 +392,73 @@ async function leerTerrenos() {
 
         }
 
-        snapshot.forEach(doc => {
+        snapshot.forEach(documento=>{
 
-            const terreno = doc.data();
+            const terreno = documento.data();
 
-            if (!terreno.visible) return;
+            if(!terreno.visible){
 
-            const card = crearCard(doc.id, terreno);
+                return;
 
-            grid.insertAdjacentHTML("beforeend", card);
+            }
+
+            const card = crearCard(
+
+                documento.id,
+
+                terreno
+
+            );
+
+            grid.insertAdjacentHTML(
+
+                "beforeend",
+
+                card
+
+            );
+
+            crearMarcador(
+
+                documento.id,
+
+                terreno
+
+            );
+
+            const municipio = terreno.municipio;
+
+if(!municipios[municipio]){
+
+    municipios[municipio]=0;
+
+}
+
+municipios[municipio]++;
 
         });
 
+cargarUbicaciones();
+
+        if(limites.isValid()){
+
+            mapaGeneral.fitBounds(
+
+                limites,
+
+                {
+
+                    padding:[60,60]
+
+                }
+
+            );
+
+        }
+
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(error);
 

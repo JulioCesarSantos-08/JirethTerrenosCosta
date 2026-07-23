@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Todos los Terrenos | Jireth</title>
+
+    <link rel="icon" type="image/png" href="imagenes/logo1.png">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/terrenos.css">
+
+</head>
+
+<body>
+
+<header class="encabezado">
+
+    <div class="contenedorHeader">
+
+        <a href="index.html" class="logo">
+
+            <img src="imagenes/logo1.png" alt="Logo">
+
+        </a>
+
+        <a href="index.html" class="volver">
+
+            ← Volver al inicio
+
+        </a>
+
+    </div>
+
+</header>
+
+<section class="heroCatalogo">
+
+    <div class="contenedor">
+
+        <span class="subtitulo">
+
+            JIRETH TERRENOS
+
+        </span>
+
+        <h1 id="tituloPagina">
+
+            Todos nuestros terrenos
+
+        </h1>
+
+        <p id="descripcionPagina">
+
+            Explora todas las propiedades disponibles.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="filtros">
+
+    <div class="contenedor">
+
+        <input
+
+            id="buscar"
+
+            type="text"
+
+            placeholder="Buscar terreno..."
+
+        >
+
+        <select id="filtroMunicipio">
+
+            <option value="">
+
+                Todos los municipios
+
+            </option>
+
+        </select>
+
+        <select id="filtroTipo">
+
+            <option value="">
+
+                Todos los tipos
+
+            </option>
+
+        </select>
+
+        <select id="ordenar">
+
+            <option value="">
+
+                Ordenar
+
+            </option>
+
+            <option value="precioAsc">
+
+                Precio menor
+
+            </option>
+
+            <option value="precioDesc">
+
+                Precio mayor
+
+            </option>
+
+            <option value="metrosAsc">
+
+                Menor superficie
+
+            </option>
+
+            <option value="metrosDesc">
+
+                Mayor superficie
+
+            </option>
+
+        </select>
+
+    </div>
+
+</section>
+
+<section class="contenedor">
+
+    <div
+
+        class="gridTerrenos"
+
+        id="gridTerrenos">
+
+    </div>
+
+</section>
+
+<script type="module" src="js/terrenos.js"></script>
+
+</body>
+
+</html>

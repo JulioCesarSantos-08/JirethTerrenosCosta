@@ -1,0 +1,1458 @@
+:root{
+
+    --verde:#1d7d3d;
+    --verdeOscuro:#14582b;
+    --verdeClaro:#31b057;
+    --dorado:#d7b46a;
+
+    --texto:#1f2937;
+    --gris:#6b7280;
+
+    --fondo:#f5f7fb;
+    --blanco:#ffffff;
+
+    --borde:#e5e7eb;
+
+    --sombra:0 12px 35px rgba(0,0,0,.08);
+
+    --radio:22px;
+
+    --transicion:.35s;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:
+
+    "Poppins",
+
+    "Segoe UI",
+
+    sans-serif;
+
+    background:var(--fondo);
+
+    color:var(--texto);
+
+}
+
+img{
+
+    display:block;
+
+    width:100%;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+.contenedor{
+
+    width:min(1300px,92%);
+
+    margin:auto;
+
+}
+
+
+
+
+
+
+
+
+
+.encabezado{
+
+    background:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    box-shadow:
+
+    0 5px 18px rgba(0,0,0,.06);
+
+}
+
+.contenedorHeader{
+
+    width:min(1300px,92%);
+
+    margin:auto;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo img{
+
+    width:120px;
+
+    transition:.4s;
+
+}
+
+.logo img:hover{
+
+    transform:scale(1.05);
+
+}
+
+.volver{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:white;
+
+    color:var(--verde);
+
+    padding:14px 24px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    box-shadow:
+
+    0 12px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    border:2px solid transparent;
+
+}
+
+.volver:hover{
+
+    background:var(--verde);
+
+    color:white;
+
+    transform:translateY(-3px);
+
+    border-color:var(--verdeOscuro);
+
+    box-shadow:
+
+    0 18px 35px rgba(29,125,61,.30);
+
+}
+
+.volver::before{
+
+    content:"🏠";
+
+    font-size:1rem;
+
+}
+
+.volver::after{
+
+    content:"➜";
+
+    transition:.35s;
+
+}
+
+.volver:hover::after{
+
+    transform:translateX(6px);
+
+}
+
+.heroCatalogo{
+
+    padding:
+
+    70px
+
+    0
+
+    45px;
+
+    text-align:center;
+
+}
+
+.subtitulo{
+
+    display:inline-block;
+
+    color:var(--verde);
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    margin-bottom:18px;
+
+}
+
+.heroCatalogo h1{
+
+    font-size:
+
+    clamp(
+
+    2.2rem,
+
+    5vw,
+
+    3.5rem
+
+    );
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+}
+
+.heroCatalogo p{
+
+    width:min(700px,90%);
+
+    margin:auto;
+
+    color:var(--gris);
+
+    font-size:1.08rem;
+
+    line-height:1.8;
+
+}
+
+
+
+
+
+
+
+
+
+.filtros{
+
+    margin-top:25px;
+
+    margin-bottom:45px;
+
+}
+
+.filtros .contenedor{
+
+    display:grid;
+
+    grid-template-columns:
+
+    2fr
+
+    1fr
+
+    1fr
+
+    1fr;
+
+    gap:18px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:24px;
+
+    box-shadow:var(--sombra);
+
+}
+
+.filtros input,
+
+.filtros select{
+
+    height:58px;
+
+    border:2px solid var(--borde);
+
+    border-radius:16px;
+
+    outline:none;
+
+    padding:0 18px;
+
+    font-size:.95rem;
+
+    transition:.3s;
+
+    background:white;
+
+}
+
+.filtros input:focus,
+
+.filtros select:focus{
+
+    border-color:var(--verde);
+
+    box-shadow:
+
+    0 0 0 5px
+
+    rgba(35,140,73,.10);
+
+}
+
+.filtros input::placeholder{
+
+    color:#9ca3af;
+
+}
+
+
+
+
+
+
+
+
+
+.gridTerrenos{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(
+
+    auto-fit,
+
+    minmax(
+
+    330px,
+
+    1fr
+
+    )
+
+    );
+
+    gap:35px;
+
+    padding-bottom:90px;
+
+}
+
+
+
+
+
+
+
+
+
+.sinDatos{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:80px;
+
+    text-align:center;
+
+    color:var(--gris);
+
+    font-size:1.1rem;
+
+    box-shadow:var(--sombra);
+
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:1000px){
+
+    .filtros .contenedor{
+
+        grid-template-columns:
+
+        repeat(
+
+        2,
+
+        1fr
+
+        );
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:650px){
+
+    .contenedorHeader{
+
+        height:auto;
+
+        padding:20px 0;
+
+        flex-direction:column;
+
+        gap:15px;
+
+    }
+
+    .logo img{
+
+        width:95px;
+
+    }
+
+    .heroCatalogo{
+
+        padding-top:40px;
+
+    }
+
+    .heroCatalogo h1{
+
+        font-size:2.2rem;
+
+    }
+
+    .heroCatalogo p{
+
+        font-size:.95rem;
+
+    }
+
+    .filtros .contenedor{
+
+        grid-template-columns:1fr;
+
+        padding:20px;
+
+    }
+
+    .gridTerrenos{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+    }
+
+}
+
+.cardTerreno{
+
+    background:var(--blanco);
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:relative;
+
+    border:1px solid rgba(0,0,0,.04);
+
+}
+
+.cardTerreno:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+    0 28px 60px rgba(0,0,0,.16);
+
+}
+
+.cardTerreno::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--verde),
+
+        var(--verdeClaro),
+
+        var(--dorado)
+
+    );
+
+}
+
+.imagenTerreno{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:250px;
+
+    background:#ececec;
+
+}
+
+.imagenTerreno img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+}
+
+.cardTerreno:hover .imagenTerreno img{
+
+    transform:scale(1.08);
+
+}
+
+.estado{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:var(--verde);
+
+    color:white;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    padding:
+
+    8px
+
+    14px;
+
+    border-radius:50px;
+
+    letter-spacing:1px;
+
+    box-shadow:
+
+    0 10px 25px
+
+    rgba(0,0,0,.20);
+
+}
+
+.contenidoTerreno{
+
+    padding:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+
+}
+
+.tipo{
+
+    color:var(--verde);
+
+    text-transform:uppercase;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    font-size:.78rem;
+
+    margin-bottom:10px;
+
+}
+
+.nombreTerreno{
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+    margin-bottom:12px;
+
+    color:var(--texto);
+
+}
+
+.descripcion{
+
+    color:var(--gris);
+
+    line-height:1.8;
+
+    font-size:.95rem;
+
+    margin-bottom:22px;
+
+}
+
+.precio{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--verdeOscuro);
+
+    margin-bottom:20px;
+
+}
+
+.infoTerreno{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+    gap:14px;
+
+    margin-bottom:25px;
+
+}
+
+.info{
+
+    background:#f7f8fb;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    text-align:center;
+
+}
+
+.info span{
+
+    display:block;
+
+    color:#888;
+
+    font-size:.75rem;
+
+    margin-bottom:6px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.info strong{
+
+    font-size:1rem;
+
+    color:var(--texto);
+
+}
+
+.botonTerreno{
+
+    margin-top:auto;
+
+    height:56px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--verde),
+
+        var(--verdeClaro)
+
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.botonTerreno:hover{
+
+    transform:translateY(-2px);
+
+    letter-spacing:1px;
+
+    box-shadow:
+
+    0 18px 30px
+
+    rgba(31,125,61,.28);
+
+}
+
+.precio::before{
+
+    content:"$ ";
+
+}
+
+.cardTerreno:hover .precio{
+
+    color:var(--verde);
+
+}
+
+.cardTerreno:hover .nombreTerreno{
+
+    color:var(--verde);
+
+}
+
+.info:hover{
+
+    background:#eef8f1;
+
+    transition:.35s;
+
+}
+
+.imagenTerreno::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        to top,
+
+        rgba(0,0,0,.28),
+
+        transparent
+
+    );
+
+    opacity:.8;
+
+    pointer-events:none;
+
+}
+
+@media(max-width:700px){
+
+    .imagenTerreno{
+
+        height:220px;
+
+    }
+
+    .contenidoTerreno{
+
+        padding:22px;
+
+    }
+
+    .precio{
+
+        font-size:1.6rem;
+
+    }
+
+    .nombreTerreno{
+
+        font-size:1.25rem;
+
+    }
+
+}
+
+.heroCatalogo{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(29,125,61,.08),
+
+        rgba(255,255,255,.95)
+
+    );
+
+}
+
+.heroCatalogo::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(49,176,87,.12),
+
+        transparent 70%
+
+    );
+
+    top:-260px;
+
+    right:-180px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+}
+
+.heroCatalogo::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(215,180,106,.12),
+
+        transparent 70%
+
+    );
+
+    bottom:-180px;
+
+    left:-140px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+}
+
+.heroCatalogo .contenedor{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.cardTerreno{
+
+    animation:
+
+    aparecer .65s ease;
+
+}
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(45px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+.cardTerreno{
+
+    cursor:pointer;
+
+}
+
+.cardTerreno:hover{
+
+    border-color:
+
+    rgba(29,125,61,.15);
+
+}
+
+.imagenTerreno{
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #ececec,
+
+        #d8d8d8
+
+    );
+
+}
+
+.imagenTerreno img{
+
+    filter:
+
+    saturate(108%)
+
+    contrast(104%)
+
+    brightness(1.02);
+
+}
+
+.cardTerreno:hover .imagenTerreno img{
+
+    filter:
+
+    saturate(118%)
+
+    contrast(108%)
+
+    brightness(1.05);
+
+}
+
+.estado{
+
+    backdrop-filter:
+
+    blur(8px);
+
+}
+
+.precio{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.precio::after{
+
+    content:"MXN";
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    color:#888;
+
+}
+
+.info{
+
+    transition:.35s;
+
+    border:1px solid transparent;
+
+}
+
+.info:hover{
+
+    border-color:
+
+    rgba(29,125,61,.15);
+
+}
+
+.info strong{
+
+    display:block;
+
+    margin-top:4px;
+
+}
+
+.botonTerreno{
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.botonTerreno::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.35),
+
+        transparent
+
+    );
+
+    transition:.6s;
+
+}
+
+.botonTerreno:hover::before{
+
+    left:130%;
+
+}
+
+.filtros input,
+
+.filtros select{
+
+    font-weight:500;
+
+}
+
+.filtros select{
+
+    cursor:pointer;
+
+}
+
+.filtros input:hover,
+
+.filtros select:hover{
+
+    border-color:
+
+    rgba(29,125,61,.35);
+
+}
+
+.sinDatos{
+
+    animation:
+
+    aparecer .5s ease;
+
+}
+
+.gridTerrenos{
+
+    align-items:start;
+
+}
+
+@media(min-width:1300px){
+
+    .gridTerrenos{
+
+        grid-template-columns:
+
+        repeat(
+
+            3,
+
+            1fr
+
+        );
+
+    }
+
+}
+
+@media(max-width:1100px){
+
+    .gridTerrenos{
+
+        grid-template-columns:
+
+        repeat(
+
+            2,
+
+            1fr
+
+        );
+
+    }
+
+}
+
+@media(max-width:720px){
+
+    .gridTerrenos{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.cardTerreno{
+
+    border:none;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(14px);
+
+}
+
+.cardTerreno:hover{
+
+    transform:translateY(-12px) scale(1.02);
+
+}
+
+.imagenTerreno{
+
+    border-bottom:1px solid rgba(0,0,0,.05);
+
+}
+
+.imagenTerreno img{
+
+    transition:.8s;
+
+}
+
+.cardTerreno:hover img{
+
+    transform:scale(1.12);
+
+}
+
+.estado{
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--verde),
+
+        var(--verdeClaro)
+
+    );
+
+    padding:10px 18px;
+
+    font-size:.75rem;
+
+    letter-spacing:1.5px;
+
+    font-weight:700;
+
+}
+
+.contenidoTerreno{
+
+    gap:14px;
+
+}
+
+.tipo{
+
+    display:inline-flex;
+
+    width:max-content;
+
+    padding:8px 14px;
+
+    background:#eef8f1;
+
+    color:var(--verde);
+
+    border-radius:50px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+.nombreTerreno{
+
+    transition:.3s;
+
+}
+
+.cardTerreno:hover .nombreTerreno{
+
+    color:var(--verde);
+
+}
+
+.descripcion{
+
+    min-height:78px;
+
+}
+
+.precio{
+
+    font-size:2.2rem;
+
+    font-weight:800;
+
+}
+
+.infoTerreno{
+
+    gap:16px;
+
+}
+
+.info{
+
+    transition:.35s;
+
+}
+
+.info:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.info span{
+
+    color:#999;
+
+    font-weight:600;
+
+}
+
+.info strong{
+
+    font-size:1.05rem;
+
+}
+
+.botonTerreno{
+
+    height:60px;
+
+    font-size:.95rem;
+
+    border-radius:18px;
+
+    font-weight:700;
+
+}
+
+.botonTerreno:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.filtros input{
+
+    background:#fafafa;
+
+}
+
+.filtros select{
+
+    background:#fafafa;
+
+}
+
+.filtros input:focus,
+
+.filtros select:focus{
+
+    background:white;
+
+}
+
+.heroCatalogo h1{
+
+    font-weight:800;
+
+}
+
+.heroCatalogo p{
+
+    max-width:720px;
+
+}
+
+.gridTerrenos{
+
+    margin-top:20px;
+
+}
+
+@media(max-width:900px){
+
+    .precio{
+
+        font-size:1.8rem;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cardTerreno{
+
+        border-radius:22px;
+
+    }
+
+    .imagenTerreno{
+
+        height:210px;
+
+    }
+
+    .contenidoTerreno{
+
+        padding:20px;
+
+    }
+
+    .precio{
+
+        font-size:1.6rem;
+
+    }
+
+    .botonTerreno{
+
+        height:54px;
+
+    }
+
+}

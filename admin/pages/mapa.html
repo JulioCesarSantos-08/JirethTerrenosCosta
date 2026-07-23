@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <link rel="icon" href="../../imagenes/logo1.png">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mapa | Panel Administrador</title>
+
+<link rel="stylesheet" href="../css/panel.css">
+<link rel="stylesheet" href="../css/mapa.css">
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<div class="logoArea">
+
+<img src="../../imagenes/logo1.png">
+
+<h2>Jireth Terrenos</h2>
+
+<p>Panel Administrativo</p>
+
+</div>
+
+<nav class="menu">
+
+<button onclick="location.href='../panel.html'">
+
+    Dashboard
+
+</button>
+
+<button onclick="location.href='terrenos.html'">
+
+    Terrenos
+
+</button>
+
+<button class="active">
+
+    Mapa
+
+</button>
+
+<button onclick="location.href='estadisticas.html'">
+
+    Estadísticas
+
+</button>
+
+<button onclick="location.href='configuracion.html'">
+
+    Configuración
+
+</button>
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Cerrar sesión
+
+</button>
+
+</nav>
+
+</aside>
+
+<div class="main">
+
+<header class="header">
+
+<h1>
+
+Mapa de Propiedades
+
+</h1>
+
+<div class="usuario">
+
+<div>
+
+<strong>
+
+Administrador
+
+</strong>
+
+</div>
+
+<div class="avatar">
+
+A
+
+</div>
+
+</div>
+
+</header>
+
+<main class="contenido">
+
+<div class="tituloPagina">
+
+<div>
+
+<h2>
+
+Mapa General
+
+</h2>
+
+<p>
+
+Consulta todas las propiedades registradas.
+
+</p>
+
+</div>
+
+<button
+class="btn btnVerde"
+id="nuevoTerreno"
+>
+
+<i class="fa-solid fa-plus"></i>
+
+Nuevo Terreno
+
+</button>
+
+</div>
+
+<div class="panelMapa">
+
+<div class="barraMapa">
+
+<input
+type="text"
+id="buscarMapa"
+placeholder="Buscar terreno..."
+>
+
+<select id="municipioMapa">
+
+<option value="">
+
+Todos los municipios
+
+</option>
+
+</select>
+
+<select id="estadoMapa">
+
+<option value="">
+
+Todos
+
+</option>
+
+<option value="visible">
+
+Visibles
+
+</option>
+
+<option value="oculto">
+
+Ocultos
+
+</option>
+
+</select>
+
+</div>
+
+<div class="contenidoMapa">
+
+<div class="listaTerrenos">
+
+<div class="tituloLista">
+
+<h3>
+
+Propiedades
+
+</h3>
+
+<span id="totalTerrenos">
+
+0
+
+</span>
+
+</div>
+
+<div
+id="listaTerrenos"
+class="listaScroll"
+>
+
+</div>
+
+</div>
+
+<div
+id="mapa"
+class="mapaLeaflet"
+>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script type="module" src="../js/mapa.js"></script>
+
+</body>
+
+</html>
