@@ -2,7 +2,9 @@ import { db } from "../firebase.js";
 
 import {
     collection,
-    getDocs
+    getDocs,
+    doc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const grid = document.getElementById("gridTerrenos");
@@ -120,7 +122,7 @@ function crearCard(id, terreno){
 
 }
 
-function iniciarMapa(){
+async function iniciarMapa(){
 
     if(!mapaContenedor){
 
@@ -128,11 +130,59 @@ function iniciarMapa(){
 
     }
 
-    mapaGeneral = L.map("mapaTerrenos").setView(
+    let latitud=16.8609;
 
-        [16.8609,-96.7842],
+    let longitud=-96.7842;
 
-        8
+    let zoom=8;
+
+    try{
+
+        const documento=await getDoc(
+
+            doc(
+
+                db,
+
+                "configuracion",
+
+                "general"
+
+            )
+
+        );
+
+        if(documento.exists()){
+
+            const config=documento.data();
+
+            latitud=Number(config.latitud)||latitud;
+
+            longitud=Number(config.longitud)||longitud;
+
+            zoom=Number(config.zoom)||zoom;
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+    mapaGeneral=L.map("mapaTerrenos").setView(
+
+        [
+
+            latitud,
+
+            longitud
+
+        ],
+
+        zoom
 
     );
 
@@ -150,7 +200,7 @@ function iniciarMapa(){
 
     ).addTo(mapaGeneral);
 
-    limites = L.latLngBounds();
+    limites=L.latLngBounds();
 
 }
 
@@ -366,7 +416,7 @@ async function leerTerrenos(){
 
 }
 
-        iniciarMapa();
+        await iniciarMapa();
 
         const snapshot = await getDocs(
 

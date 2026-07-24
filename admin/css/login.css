@@ -9,12 +9,6 @@ body{
 
     min-height:100vh;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
     background:
     linear-gradient(
     135deg,
@@ -22,7 +16,7 @@ body{
     #2E7D32 100%
     );
 
-    overflow:hidden;
+    overflow-x:hidden;
 
 }
 
@@ -70,13 +64,15 @@ body::after{
 
     width:100%;
 
+    min-height:100vh;
+
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-    padding:30px;
+    padding:40px 20px;
 
     position:relative;
 
@@ -341,21 +337,33 @@ body::after{
 
 @media(max-width:600px){
 
+    .loginContainer{
+
+        min-height:auto;
+
+        align-items:flex-start;
+
+        padding:35px 18px 50px;
+
+    }
+
     .loginCard{
 
         padding:30px 25px;
+
+        border-radius:24px;
 
     }
 
     .logo{
 
-        width:120px;
+        width:110px;
 
     }
 
     .loginCard h1{
 
-        font-size:1.6rem;
+        font-size:1.7rem;
 
     }
 
