@@ -9,7 +9,10 @@ function iniciarMapa() {
 
     if (mapa) return;
 
-    mapa = L.map("mapaTerreno").setView([16.8609, -96.7842], 13);
+    mapa = L.map("mapaTerreno").setView(
+        [16.8609, -96.7842],
+        13
+    );
 
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -63,11 +66,79 @@ function iniciarMapa() {
 
 function actualizarInputs(lat,lng){
 
-    inputLatitud.value = lat.toFixed(6);
+    inputLatitud.value = Number(lat).toFixed(6);
 
-    inputLongitud.value = lng.toFixed(6);
+    inputLongitud.value = Number(lng).toFixed(6);
 
 }
+
+function actualizarMapaDesdeInputs(){
+
+    const lat = Number(inputLatitud.value);
+
+    const lng = Number(inputLongitud.value);
+
+    if(
+        inputLatitud.value.trim() === "" ||
+        inputLongitud.value.trim() === ""
+    ){
+
+        return;
+
+    }
+
+    if(
+        !Number.isFinite(lat) ||
+        !Number.isFinite(lng)
+    ){
+
+        return;
+
+    }
+
+    if(
+        lat < -90 ||
+        lat > 90 ||
+        lng < -180 ||
+        lng > 180
+    ){
+
+        return;
+
+    }
+
+    iniciarMapa();
+
+    mapa.setView(
+        [lat,lng],
+        17
+    );
+
+    marcador.setLatLng(
+        [lat,lng]
+    );
+
+}
+
+inputLatitud.addEventListener(
+    "change",
+    actualizarMapaDesdeInputs
+);
+
+inputLongitud.addEventListener(
+    "change",
+    actualizarMapaDesdeInputs
+);
+
+inputLatitud.addEventListener(
+    "blur",
+    actualizarMapaDesdeInputs
+);
+
+inputLongitud.addEventListener(
+    "blur",
+    actualizarMapaDesdeInputs
+);
 
 btnMiUbicacion.addEventListener("click",()=>{
 
@@ -77,16 +148,27 @@ btnMiUbicacion.addEventListener("click",()=>{
 
     }
 
+    iniciarMapa();
+
     navigator.geolocation.getCurrentPosition(pos=>{
 
         const lat = pos.coords.latitude;
+
         const lng = pos.coords.longitude;
 
-        mapa.setView([lat,lng],17);
+        mapa.setView(
+            [lat,lng],
+            17
+        );
 
-        marcador.setLatLng([lat,lng]);
+        marcador.setLatLng(
+            [lat,lng]
+        );
 
-        actualizarInputs(lat,lng);
+        actualizarInputs(
+            lat,
+            lng
+        );
 
     });
 
@@ -94,16 +176,41 @@ btnMiUbicacion.addEventListener("click",()=>{
 
 window.iniciarMapa = iniciarMapa;
 
-window.cargarUbicacion=function(lat,lng){
+window.cargarUbicacion = function(lat,lng){
 
     iniciarMapa();
 
-    if(!mapa || !marcador)return;
+    if(!mapa || !marcador){
 
-    mapa.setView([lat,lng],17);
+        return;
 
-    marcador.setLatLng([lat,lng]);
+    }
 
-    actualizarInputs(lat,lng);
+    const latitud = Number(lat);
 
-}
+    const longitud = Number(lng);
+
+    if(
+        !Number.isFinite(latitud) ||
+        !Number.isFinite(longitud)
+    ){
+
+        return;
+
+    }
+
+    mapa.setView(
+        [latitud,longitud],
+        17
+    );
+
+    marcador.setLatLng(
+        [latitud,longitud]
+    );
+
+    actualizarInputs(
+        latitud,
+        longitud
+    );
+
+};
